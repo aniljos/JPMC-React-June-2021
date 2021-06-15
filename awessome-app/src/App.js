@@ -3,6 +3,8 @@ import './App.css';
 //import Hello from './components/Hello';
 import Welcome from './components/Hello';
 import {Counter} from './components/Counter';
+import ListCustomers from './components/ListCustomers';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -13,12 +15,17 @@ function App() {
 
       <section>
           {/* <Hello/> */}
-          <Welcome message="Hello"/>
+          {/* <Welcome message="Hello"/>
           <Welcome message="React"/>
-          <Welcome/>
+          <Welcome/> */}
 
-          <Counter title="Counter"/>
-          <Counter title="The Counter"/>
+          {/* <Counter title="Counter"/>
+          <Counter title="The Counter"/> */}
+
+          {/* <ListCustomers/> */}
+
+          <Login/>
+          
       </section>
     </div>
   );

@@ -1,0 +1,10 @@
+.customer{
+
+    min-height: 175px;
+    min-width: 300px;
+    margin: 7px;
+    padding: 7px;
+    background-color: slateblue;
+    border-radius: 10px;
+    border: 2px solid cadetblue;
+}
