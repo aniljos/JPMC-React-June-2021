@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios'
 
 
-function SignIn(){
+function SignIn(props){
 
     const [name, setName]= useState("");
     const [pwd, setPwd]= useState("");
@@ -40,7 +40,8 @@ function SignIn(){
                 isAuthenticated : true,
                 accessToken: resp.data.accessToken,
                 refreshToken: resp.data.refreshToken
-            }})
+            }});
+            props.history.push("/customers");
             
         } catch (error) {
             
@@ -59,15 +60,15 @@ function SignIn(){
             <p>{isAuth ? "Authenticated": "Not Authenticated"}</p>
             <p>Name</p>
             <div>
-                <input value={name} onChange={evt => setName(evt.target.value)}/>
+                <input className="form-control" value={name} onChange={evt => setName(evt.target.value)}/>
             </div>
             <p>Password</p>
             <div>
-                <input value={pwd} onChange={evt => setPwd(evt.target.value)}/>
+                <input className="form-control" value={pwd} onChange={evt => setPwd(evt.target.value)}/>
             </div>
             <br/>
             <div>
-                <button onClick={signIn}>SignIn</button>
+                <button className="btn btn-success" onClick={signIn}>SignIn</button>
             </div>
         </div>
     )

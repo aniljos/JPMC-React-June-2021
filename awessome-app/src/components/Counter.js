@@ -31,9 +31,9 @@ export class Counter extends PureComponent{
         }
         this.setState(updatedState, () => {
             console.log("count", this.state.count);
-            this.setState({
-                count1: this.state.count1 + 1
-            })
+            // this.setState({
+            //     count1: this.state.count1 + 1
+            // })
         });
         
     }
@@ -64,17 +64,18 @@ export class Counter extends PureComponent{
                 <p>Count: {this.state.count}</p>
                 <div>
                     {/* html <button onclick="inc();"></button> */}
-                    <button onClick={this.inc}>Inc</button>&nbsp;
-                    <button onClick={this.decr}>Decr</button>
+                    <button className="btn btn-success" onClick={this.inc}>Inc</button>&nbsp;
+                    <button className="btn btn-danger" onClick={this.decr}>Decr</button>
                 </div>
                 <div>
                     {/* Controlled Input */}
-                    Count: <input type="number" value={this.state.count} onChange={this.change}/>
+                    Count: <input className="form-control" type="number" value={this.state.count} onChange={this.change}/>
                 </div>
                 <div>
                     {/* Uncontrolled Input */}
-                    Updated: <input type="number" ref={this.inpRef}/>
-                    <button onClick={this.update}>Update</button>
+                    Updated: <input className="form-control" type="number" ref={this.inpRef}/>
+                    <br/>
+                    <button className="btn btn-primary" onClick={this.update}>Update</button>
                 </div>
             </div>
         )

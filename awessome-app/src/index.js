@@ -3,15 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {store} from './redux/store';
-import {Provider} from 'react-redux';
+import { store } from './redux/store';
+import { Provider } from 'react-redux';
+import AppErrorBoundary from './components/AppErrorBoundary';
 
 ReactDOM.render(
-  // <React.StrictMode>
+  <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <AppErrorBoundary>
+        <App />
+      </AppErrorBoundary>
     </Provider>,
-  // </React.StrictMode>,
+   </React.StrictMode>,
   document.getElementById('root')
 );
 

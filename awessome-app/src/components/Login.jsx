@@ -8,9 +8,10 @@ class Login extends Component{
         name: "",
         password: ""
     }
-   
+    
     login = async() => {
-
+        let redirectUrl = (new URLSearchParams(window.location.search)).get("redirectUrl")
+        console.log("redirectUrl", redirectUrl)
         try {
             const url="http://localhost:9000/login";
             const resp = await axios.post(url, {name: this.state.name, password: this.state.password});
@@ -19,6 +20,14 @@ class Login extends Component{
                 accessToken: resp.data.accessToken,
                 refreshToken: resp.data.refreshToken
             });
+
+            if(redirectUrl !== null){
+                this.props.history.push(redirectUrl);
+            }
+            else{
+                this.props.history.push("/");
+            }
+            
         } catch (error) {
             
             this.props.setAuth({
@@ -36,17 +45,18 @@ class Login extends Component{
         const {name, password} = this.state;
         return(
             <div>
+                <h3>Login</h3>
                 <p>IsAuthenticated: {this.props.isAuth ? "Authenticated": "Not Authenticated"} </p>
                 <p>UserName</p>
                 <div>
-                    <input value={name} onChange={(evt) =>this.setState({name: evt.target.value})}/>
+                    <input className="form-control" value={name} onChange={(evt) =>this.setState({name: evt.target.value})}/>
                 </div>
                 <p>Password</p>
                 <div>
-                    <input value={password} onChange={(evt) =>this.setState({password: evt.target.value})}/>
+                    <input className="form-control" value={password} onChange={(evt) =>this.setState({password: evt.target.value})}/>
                 </div>
                 <br/>
-                <button onClick={this.login}>Login</button>
+                <button className="btn btn-success" onClick={this.login}>Login</button>
             </div>
         )
     }

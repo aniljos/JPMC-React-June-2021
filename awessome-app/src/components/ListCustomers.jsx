@@ -81,7 +81,7 @@ class ListCustomers extends Component{
                     <p>Name: {item.name}</p>
                     <p>Location: {item.location}</p>
                     <div>
-                        <button onClick={(evt) => {this.delete(evt, item)}}>Delete</button>
+                        <button className="btn btn-danger" onClick={(evt) => {this.delete(evt, item)}}>Delete</button>
                     </div>
                 </div>
             );
