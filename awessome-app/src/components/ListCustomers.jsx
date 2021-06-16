@@ -1,13 +1,17 @@
 import { Component } from "react";
 import axios from 'axios';
 import './ListCustomers.css';
+import {connect} from 'react-redux';
 
 class ListCustomers extends Component{
 
     state  = {
         data: []
     }
-    url = "http://localhost:9000/customers";
+    
+    //url = "http://localhost:9000/customers";
+
+    url = "http://localhost:9000/secure_customers";
 
     async componentDidMount(){
         // AJAX call to be made this lifecycle hook
@@ -40,7 +44,10 @@ class ListCustomers extends Component{
             //         }, (error) => {
             //             console.log("error: ", error);
             //         })
-            const resp = await axios.get(this.url);
+
+            console.log(this.props);
+            const headers = {"Authorization": `Bearer ${this.props.auth.accessToken}`}
+            const resp = await axios.get(this.url, {headers: headers});
             console.log("success: ", resp);
             this.setState({
                 data: resp.data
@@ -86,6 +93,7 @@ class ListCustomers extends Component{
                 <h3>List Customers</h3>
                 <div style={{display: "flex", flexFlow: "row wrap", justifyContent: "center"}}>
                     {this.renderCustomers()}
+                    
                 </div>
                
             </div>
@@ -94,4 +102,10 @@ class ListCustomers extends Component{
 
 }
 
-export default ListCustomers;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.auth
+    }
+}
+
+export default connect(mapStateToProps)(ListCustomers);

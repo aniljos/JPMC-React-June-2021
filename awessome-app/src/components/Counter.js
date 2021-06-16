@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, {Component, PureComponent} from 'react';
 
 
-export class Counter extends Component{
+export class Counter extends PureComponent{
 
     state = {
         count: 5,
@@ -17,6 +17,8 @@ export class Counter extends Component{
         this.state.count1 = this.state.count + 1;
         console.log(this.state);
     }
+
+    
 
     //event handler(arrow functions)
     inc = (evt) => {
@@ -55,6 +57,7 @@ export class Counter extends Component{
     }
     render(){
         //return View(JSX)
+        console.log("Counter render")
         return (
             <div>
                 <h3>{this.props.title}</h3>
@@ -76,6 +79,20 @@ export class Counter extends Component{
             </div>
         )
     }
+
+    componentDidMount(){
+        console.log("Counter componentDidMount")
+    }
+    componentDidUpdate(){
+        console.log("Counter componentDidUpdate")
+    }
+    componentWillUnmount(){
+        console.log("Counter componentWillUnmount")
+    }
+    // shouldComponentUpdate(nProps, nState){
+
+    //     return true;
+    // }
 }
 
 //export default Counter;

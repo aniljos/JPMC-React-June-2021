@@ -7,6 +7,8 @@ import ListCustomers from './components/ListCustomers';
 import Login from './components/Login';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import SignIn from './components/SignIn';
+
 function App() {
   return (
 
@@ -27,6 +29,9 @@ function App() {
             <li className="nav-item">
               <Link className="nav-link" to="/login">Login</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/signIn">SignIn</Link>
+            </li>
           </ul>
         </nav>
 
@@ -35,6 +40,7 @@ function App() {
             <Route path="/counter" exact render={() => <Counter title="Counter"/>}/>
             <Route path="/customers" exact component={ListCustomers}/>
             <Route path="/login" exact component={Login}/>
+            <Route path="/signIn" exact component={SignIn}/>
         </section>
 
 
