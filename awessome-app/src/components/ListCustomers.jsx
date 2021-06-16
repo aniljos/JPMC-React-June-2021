@@ -23,7 +23,20 @@ class ListCustomers extends Component{
             // axios.get(url)
             //         .then((resp) => {
             //             console.log("success: ", resp);
+                 //           axios.get(url)
+                //         .then((resp) => {
+                //             console.log("success: ", resp);
+                               // axios.get(url)
+                                //         .then((resp) => {
+                                //             console.log("success: ", resp);
+                    
+                                //         }, (error) => {
+                                //             console.log("error: ", error);
+                                //         })
 
+                //         }, (error) => {
+                //             console.log("error: ", error);
+            //         })
             //         }, (error) => {
             //             console.log("error: ", error);
             //         })
@@ -40,6 +53,9 @@ class ListCustomers extends Component{
 
     delete = async (evt, customer) => {
         
+        //axios.delete == return a Promise-resolved, rejected
+        // call1 => call2==> call3
+
         try {
             
             const resp = await axios.delete(this.url + "/" + customer.id);

@@ -1,5 +1,6 @@
 import {createStore, combineReducers} from 'redux';
 
+//immutable
 const initAuthState = {
     isAuthenticated: false,
     accessToken: "",
@@ -7,6 +8,14 @@ const initAuthState = {
 }
 const authReducer = (currentState=initAuthState, action) => {
 
+    // return the updated state
+    if(action.type === "SET_AUTH"){
+        return {
+           ...action.data
+        }
+    }
+
+    //for the first call
     return currentState;
 }
 
@@ -15,6 +24,7 @@ const initCartState = {
 }
 const cartReducer = (currentState=initCartState, action) => {
 
+    
     return currentState;
 }
 
